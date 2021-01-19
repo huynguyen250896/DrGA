@@ -37,7 +37,7 @@ live) of all the subjects.}
 
 \item{statusEXP}{a vector of overall survival time. It is a column vector of \code{clinicalEXP}.}
 
-\item{datMODULE4}{a data frame or matrix. \code{cna} has its rows are samples and its columns are genes.
+\item{datMODULE4}{a data frame or matrix. \code{datMODULE4} has its rows are samples and its columns are genes.
 It is input data to serve to run the forth module.}
 
 \item{cliMODULE4}{a data frame or matrix.
