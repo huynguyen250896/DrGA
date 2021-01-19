@@ -5,6 +5,7 @@ DrGA is a novel R package that has been developed based on the idea of our most 
 
 #### II. Understanding the tool and Data Structure
 ---
+The following are parameters included in DrGA and their role:
 - organism: organism name. Organism names are constructed by concatenating the first letter of the name and the family name. Example: human - hsapiens, mouse - mmusculus. Default is organism = "hsapiens".
 
 - sources: possible biological mechanisms allowed (e.g., Gene Ontology - GO:BP, GO:MF,GO:CC; KEGG; REAC; TF; MIRNA; CORUM; HP; HPA; WP;… Please see the g:GOSt web tool for the comprehensive list and details on incorporated data sources). Default is sources = c("GO:BP", "KEGG").
