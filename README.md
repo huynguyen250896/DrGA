@@ -38,7 +38,7 @@ Please download datasets [data_n_code](https://github.com/huynguyen250896/DrGA/t
 
 #### III. Pipeline
 ---
-![Figure](https://imgur.com/mquJy2O.png)
+![Figure](https://imgur.com/ZyDLMCh.png)
 **Figure:** Pipeline of the package DrGA.
 
 #### IV. Implementation
