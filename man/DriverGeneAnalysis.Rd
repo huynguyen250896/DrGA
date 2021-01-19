@@ -52,7 +52,7 @@ live) of all the subjects.}
 
 \item{minClusterSize}{Minimum cluster size. \code{minClusterSize = 10} is default.}
 
-\item{verbose}{Default value is \code{TRUE}. verbose Default value is \code{TRUE}. A logical specifying whether to print details of analysis processes.}
+\item{verbose}{Default value is \code{TRUE}. A logical specifying whether to print details of analysis processes.}
 
 \item{NetworkType}{network type. Allowed values are (unique abbreviations of) "unsigned", "signed",
 "signed hybrid". Default value is \code{signed}}
