@@ -27,7 +27,7 @@ DrGA is a novel R package that has been developed based on the idea of our most 
 
 - statusMODULE4: a vector of overall survival time. It is a column vector of clinicalMODULE4.
 
-- minClusterSize: Minimum cluster size. \code{minClusterSize = 10} is default.
+- minClusterSize: Minimum cluster size. minClusterSize = 10 is default.
 
 - NetworkType: network type. Allowed values are (unique abbreviations of) "unsigned", "signed", "signed hybrid". Defaul value is signed.
 
