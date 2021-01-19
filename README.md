@@ -49,7 +49,7 @@ devtools::install_github("huynguyen250896/DrGA")
 ```
 Call the library;
 ```sh
-x<-c("DrGA", "dplyr", "survival", "tibble", "tidyr", "ComplexHeatmap", 
+x = c("DrGA", "dplyr", "survival", "tibble", "tidyr", "ComplexHeatmap", 
      'cluster', 'mclust', 'clValid', 'Biobase', 'annotate', 'GO.db', 
      'mygene', "dynamicTreeCut", "flashClust", "Hmisc", "WGCNA","purrr",
      "gprofiler2", "table1", "compareGroups")
