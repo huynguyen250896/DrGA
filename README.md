@@ -31,7 +31,7 @@ DrGA is a novel R package that has been developed based on the idea of our most 
 
 - NetworkType: network type. Allowed values are (unique abbreviations of) "unsigned", "signed", "signed hybrid". Defaul value is signed.
 
-hm_row_names: logical. If hm_row_names = TRUE (default value), gene names appear in rows of the heatmap.  If due to the large number of driver genes leading to impossibly showing gene names in rows of the heatmap, users can turn them off by hm_row_names = FALSE.
+- hm_row_names: logical. If hm_row_names = TRUE (default value), gene names appear in rows of the heatmap.  If due to the large number of driver genes leading to impossibly showing gene names in rows of the heatmap, users can turn them off by hm_row_names = FALSE.
 
 Please download datasets [data_n_code](https://github.com/huynguyen250896/DrGA/tree/master/data_n_code) as examples to well grasp DrGA's requirement on data structure.
 
