@@ -19,7 +19,7 @@ Description: DrGA is a novel R package that has been developed
     https://github.com/huynguyen250896/DrGA.
 License: MIT license
 Depends:
-    R (>= 3.1.0)
+    R (>= 3.5.0)
 Suggests:
     knitr
 Encoding: UTF-8
