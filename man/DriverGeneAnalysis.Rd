@@ -29,7 +29,7 @@ It is input data to serve to run the second and third modules.}
 
 \item{clinicalEXP}{a data frame or matrix.
 It includes its rows are samples, and its columns are clinical features of your choice.
-Notice that the clinical data must have two columns as overall survival time (continuous
+Note that the clinical data must have two columns as overall survival time (continuous
 variable) and overall survival status (binary variable; usually coded 1 as death and 0 as
 live) of all the subjects.}
 
@@ -42,17 +42,17 @@ It is input data to serve to run the forth module.}
 
 \item{cliMODULE4}{a data frame or matrix.
 It includes its rows are samples, and its columns are clinical features of your choice.
-Notice that the clinical data must have two columns as overall survival time (continuous
+Note that the clinical data must have two columns as overall survival time (continuous
 variable) and overall survival status (binary variable; usually coded 1 as death and 0 as
 live) of all the subjects.}
 
-\item{timeMODULE4}{a vector of overall survival time. It is a column vector of \code{clinicalMODULE4}}
+\item{timeMODULE4}{a vector of overall survival time. It is a column vector of \code{cliMODULE4}}
 
-\item{statusMODULE4}{a vector of overall survival time. It is a column vector of \code{clinicalMODULE4}}
+\item{statusMODULE4}{a vector of overall survival time. It is a column vector of \code{cliMODULE4}}
 
 \item{minClusterSize}{Minimum cluster size. \code{minClusterSize = 10} is default.}
 
-\item{verbose}{Default value is \code{TRUE}. A logical specifying whether to print details of package building and installation.}
+\item{verbose}{Default value is \code{TRUE}. verbose Default value is \code{TRUE}. A logical specifying whether to print details of analysis processes.}
 
 \item{NetworkType}{network type. Allowed values are (unique abbreviations of) "unsigned", "signed",
 "signed hybrid". Default value is \code{signed}}
