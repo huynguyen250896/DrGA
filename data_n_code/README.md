@@ -1,5 +1,6 @@
 #Description
 ---
+Breast cancer data are downloaded from the cBioPortal for Cancer Genomics (http://www.cbioportal.org) [1], including somatic mutation (n = 2,369), EXP (n = 1,904), and CNA (n = 2,173). It contained the METABRIC breast cancer cohort assembled from 2509 primary breast cancer patients with 548 matched normals in the United Kingdom and Canada [2]. 
 
 The files here contain:
 1. Link_to_download_full_data.txt: A text file has a shared google drive link to download all the raw data mentioned.
