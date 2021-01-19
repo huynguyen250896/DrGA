@@ -30,7 +30,7 @@ The following are parameters included in DrGA and their role:
 
 - minClusterSize: Minimum cluster size. minClusterSize = 10 is default.
 
-- NetworkType: network type. Allowed values are (unique abbreviations of) "unsigned", "signed", "signed hybrid". Defaul value is signed.
+- NetworkType: network type. Allowed values are (unique abbreviations of) "unsigned", "signed", "signed hybrid". Default value is signed.
 
 - hm_row_names: logical. If hm_row_names = TRUE (default value), gene names appear in rows of the heatmap.  If due to the large number of driver genes leading to impossibly showing gene names in rows of the heatmap, users can turn them off by hm_row_names = FALSE.
 
