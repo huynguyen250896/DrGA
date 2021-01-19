@@ -29,7 +29,7 @@
 #'
 #' @param clinicalEXP  a data frame or matrix.
 #' It includes its rows are samples, and its columns are clinical features of your choice.
-#' Notice that the clinical data must have two columns as overall survival time (continuous
+#' Note that the clinical data must have two columns as overall survival time (continuous
 #' variable) and overall survival status (binary variable; usually coded 1 as death and 0 as
 #' live) of all the subjects.
 #'
@@ -42,17 +42,17 @@
 #'
 #' @param cliMODULE4 a data frame or matrix.
 #' It includes its rows are samples, and its columns are clinical features of your choice.
-#' Notice that the clinical data must have two columns as overall survival time (continuous
+#' Note that the clinical data must have two columns as overall survival time (continuous
 #' variable) and overall survival status (binary variable; usually coded 1 as death and 0 as
 #' live) of all the subjects.
 #'
-#' @param timeMODULE4 a vector of overall survival time. It is a column vector of \code{clinicalMODULE4}
+#' @param timeMODULE4 a vector of overall survival time. It is a column vector of \code{cliMODULE4}
 #'
-#' @param statusMODULE4 a vector of overall survival time. It is a column vector of \code{clinicalMODULE4}
+#' @param statusMODULE4 a vector of overall survival time. It is a column vector of \code{cliMODULE4}
 #'
 #' @param minClusterSize Minimum cluster size. \code{minClusterSize = 10} is default.
 #'
-#' @param verbose Default value is \code{TRUE}. A logical specifying whether to print details of package building and installation.
+#' @param verbose Default value is \code{TRUE}. A logical specifying whether to print details of analysis processes.
 #'
 #' @param NetworkType network type. Allowed values are (unique abbreviations of) "unsigned", "signed",
 #' "signed hybrid". Default value is \code{signed}
