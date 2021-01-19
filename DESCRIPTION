@@ -1,0 +1,67 @@
+Package: DrGA
+Type: Package
+Title: DrGA: driver gene analysis in an automatic manner
+Version: 0.1.0
+Author@R:
+    c(person(given = "Quang-Huy",
+           family = "Nguyen",
+           role = c("aut", "cre"),
+           email = "huynguyen96.dnu@gmail.com"),
+      person("Duc-Hau","Le",role = "ths") 
+Maintainer: Quang-Huy Nguyen <huynguyen96.dnu@gmail.com>
+Description: DrGA is a novel R package that has been developed  
+    based on the idea of our recent driver gene analysis scheme. 
+    Its aim is to wholy automate the analysis process of driver 
+    genes at a low investment of time for this process by 
+    merging state-of-the-art statistical tools into one. 
+    For further information on requirements as well as how to 
+    implement this tool, please visit my Github repository: 
+    https://github.com/huynguyen250896/DrGA.
+License: MIT license
+Depends:
+    R (>= 3.1.0)
+Suggests:
+    knitr
+Encoding: UTF-8
+LazyData: true
+Imports:
+    survival,
+    dplyr,
+    tidyr,
+    ComplexHeatmap,
+    cluster,
+    mclust,
+    clValid,
+    Biobase,
+    annotate,
+    GO.db,
+    mygene,
+    dynamicTreeCut,
+    flashClust,
+    Hmisc,
+    WGCNA,
+    purrr,
+    gprofiler2,
+    table1,
+    compareGroups
+Remotes: 
+    cran::survival,
+    cran::dplyr,
+    cran::tidyr,
+    github::jokergoo/ComplexHeatmap, 
+    cran::cluster,
+    cran::mclust,
+    cran::clValid,
+    bioc::Biobase,
+    bioc::annotate,
+    bioc::GO.db,
+    bioc::mygene,
+    cran::dynamicTreeCut,
+    cran::flashClust,
+    cran::Hmisc,
+    cran::WGCNA,
+    cran::purrr,
+    cran::gprofiler2,
+    cran::table1,
+    cran::compareGroups
+RoxygenNote: 7.1.1
