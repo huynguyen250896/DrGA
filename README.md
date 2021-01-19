@@ -38,17 +38,17 @@ Please download datasets [data_n_code](https://github.com/huynguyen250896/DrGA/t
 #### III. Pipeline
 ---
 ![Figure](https://imgur.com/undefined.png)
-**Figure:** Pipeline of the package computeC.
+**Figure:** Pipeline of the package DrGA.
 
 #### IV. Implementation
 ---
 Use the following command to install directly from GitHub;
 ```sh
-devtools::install_github("huynguyen250896/computeC")
+devtools::install_github("huynguyen250896/DrGA")
 ```
 Call the library;
 ```sh
-library(computeC)
+library(DrGA)
 ```
 running example:
 ```sh
