@@ -52,7 +52,7 @@ live) of all the subjects.}
 
 \item{minClusterSize}{Minimum cluster size. \code{minClusterSize = 10} is default.}
 
-\item{verbose}{Defaul value is \code{TRUE}. A logical specifying whether to print details of package building and installation.}
+\item{verbose}{Default value is \code{TRUE}. A logical specifying whether to print details of package building and installation.}
 
 \item{NetworkType}{network type. Allowed values are (unique abbreviations of) "unsigned", "signed",
 "signed hybrid". Default value is \code{signed}}
