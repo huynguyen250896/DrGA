@@ -1,7 +1,7 @@
 #library
 library(tibble)
 library(dplyr)
-install.packages("DrGA"); library("DrGA")
+devtools::install_github("huynguyen250896/DrGA"); library("DrGA") #NOTE: Download all dependencies of the tool!
 
 #-------------------------------------o0o-------------------------------------#
 # PREPROCESSING PROCEDURES
