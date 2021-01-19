@@ -37,7 +37,7 @@
 #'
 #' @param statusEXP a vector of overall survival time. It is a column vector of \code{clinicalEXP}.
 #'
-#' @param datMODULE4 a data frame or matrix. \code{cna} has its rows are samples and its columns are genes.
+#' @param datMODULE4 a data frame or matrix. \code{datMODULE4} has its rows are samples and its columns are genes.
 #' It is input data to serve to run the forth module.
 #'
 #' @param cliMODULE4 a data frame or matrix.
