@@ -22,7 +22,7 @@ the name and the family name. Example: human - \code{hsapiens}, mouse - \code{mm
 sources). Default is \code{sources = c("GO:BP", "KEGG")}}
 
 \item{methodCC}{Correlation method type. Allowed values are \code{spearman} (default), \code{pearson},
-\code{kendall}, \code{kendall})}
+\code{kendall}}
 
 \item{exp}{a data frame or matrix. \code{exp} has its rows are samples and its columns are genes.
 It is input data to serve to run the second and third modules.}
@@ -55,7 +55,7 @@ live) of all the subjects.}
 \item{verbose}{Defaul value is \code{TRUE}. A logical specifying whether to print details of package building and installation.}
 
 \item{NetworkType}{network type. Allowed values are (unique abbreviations of) "unsigned", "signed",
-"signed hybrid". Defaul value is \code{signed}}
+"signed hybrid". Default value is \code{signed}}
 
 \item{hm_row_names}{logical. If \code{hm_row_names = TRUE} (default value), gene names appear in rows of
 the heatmap.  If due to the large number of driver genes leading to impossibly showing gene names in
