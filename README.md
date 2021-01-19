@@ -47,7 +47,7 @@ Use the following command to install directly from GitHub;
 ```sh
 devtools::install_github("huynguyen250896/DrGA")
 ```
-Call the library;
+Call the nescessary libraries;
 ```sh
 x = c("DrGA", "dplyr", "survival", "tibble", "tidyr", "ComplexHeatmap", 
      'cluster', 'mclust', 'clValid', 'Biobase', 'annotate', 'GO.db', 
