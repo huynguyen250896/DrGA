@@ -22,7 +22,7 @@
 #' sources). Default is \code{sources = c("GO:BP", "KEGG")}
 #'
 #' @param methodCC Correlation method type. Allowed values are \code{spearman} (default), \code{pearson},
-#' \code{kendall}, \code{kendall})
+#' \code{kendall}
 #'
 #' @param exp a data frame or matrix. \code{exp} has its rows are samples and its columns are genes.
 #' It is input data to serve to run the second and third modules.
@@ -52,10 +52,10 @@
 #'
 #' @param minClusterSize Minimum cluster size. \code{minClusterSize = 10} is default.
 #'
-#' @param verbose Defaul value is \code{TRUE}. A logical specifying whether to print details of package building and installation.
+#' @param verbose Default value is \code{TRUE}. A logical specifying whether to print details of package building and installation.
 #'
 #' @param NetworkType network type. Allowed values are (unique abbreviations of) "unsigned", "signed",
-#' "signed hybrid". Defaul value is \code{signed}
+#' "signed hybrid". Default value is \code{signed}
 #'
 #' @param hm_row_names logical. If \code{hm_row_names = TRUE} (default value), gene names appear in rows of
 #' the heatmap.  If due to the large number of driver genes leading to impossibly showing gene names in
