@@ -28,7 +28,7 @@ The following are parameters included in DrGA and their role:
 
 - statusMODULE4: a vector of overall survival time. It is a column vector of `cliMODULE4`.
 
-- minClusterSize: Minimum cluster size. `minClusterSize = 10 is default.
+- minClusterSize: Minimum cluster size. `minClusterSize = 10` is default.
 
 - NetworkType: network type. Allowed values are (unique abbreviations of) `unsigned`, `signed`, `signed hybrid`. Default value is `signed`.
 
