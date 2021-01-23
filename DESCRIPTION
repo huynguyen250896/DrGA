@@ -67,7 +67,7 @@ Remotes:
     cran::purrr,
     cran::gprofiler2,
     cran::table1,
-    cran::compareGroups
+    cran::compareGroups,
     bioc::impute,
     bioc::preprocessCore
 RoxygenNote: 7.1.1
