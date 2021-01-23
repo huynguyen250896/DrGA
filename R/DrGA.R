@@ -257,7 +257,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     
     #####correlation between driver genes and the clinical features
     set.seed(seed)
-    cat("\n", "- Starting to perform association analysis of individual driver genes with the remaining clinical features of your choice...", "\n")
+ 
     listCC=list()
     for (i in 1:length(names(featureEXP)) ) {
       listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
@@ -377,7 +377,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
                  colors = blueWhiteRed(50),
                  textMatrix = textMatrix,
                  setStdMargins = FALSE,
-                 cex.text = 0.7,
+                 cex.text = 0.63,
                  zlim = c(-1,1),
                  main = paste("Module-clinical feature relationships"))
   # Close the file
@@ -496,7 +496,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     #message
     cat("\n","- Starting to perform a comparison between the identified", optimalnumber, "subgroups in term of survival rates...", "\n")
     pcox= summary(coxFit)$logtest[3]#Cox p-value
-    cat(">>>> The Cox P-value gained from comparing patient outcomes between the identified", optimalnumber, "patient subgroups is: ", pcox[[1]])
+    cat(">>>> The Cox P-value gained from comparing patient outcomes between the identified", optimalnumber, "subgroups is: ", pcox[[1]])
     cat("\n", ">>>> And the Hazard ratio between the identified", optimalnumber, "patient subgroups is: "); print(exp(coxFit[["coefficients"]]))
     cat("With its 95% Confidence Interval is: ", paste(round(summary(coxFit)[["conf.int"]][[3]],3), "-", round(summary(coxFit)[["conf.int"]][[4]],3)))
     
