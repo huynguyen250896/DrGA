@@ -1,6 +1,6 @@
 Description
 ---
-liver gene expression data (n = 135) from female mice are freely downloaded from The Gene Expression Omnibus (GEO; http://www.ncbi.nlm.nih.gov/geo) with
+Liver gene expression data (n = 135) from female mice are freely downloaded from The Gene Expression Omnibus (GEO; http://www.ncbi.nlm.nih.gov/geo) with
 accession number GSE2814 [1].
 
 The files here contain:
