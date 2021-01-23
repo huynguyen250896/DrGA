@@ -49,7 +49,7 @@ Remotes:
     cran::survival,
     cran::dplyr,
     cran::tidyr,
-    github::jokergoo/ComplexHeatmap, 
+    bioc::ComplexHeatmap, 
     cran::cluster,
     cran::mclust,
     cran::clValid,
