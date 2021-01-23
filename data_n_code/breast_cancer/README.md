@@ -1,4 +1,4 @@
-#Description
+Description
 ---
 Breast cancer data are downloaded from the cBioPortal for Cancer Genomics (http://www.cbioportal.org) [1], including somatic mutation (n = 2,369), EXP (n = 1,904), and CNA (n = 2,173). It contains the METABRIC breast cancer cohort assembled from 2509 primary breast cancer patients with 548 matched normals in the United Kingdom and Canada [2]. 
 
@@ -11,7 +11,7 @@ The files here contain:
 
 4. code_DrGA.RData:  Processed data are available to run DrGA immediately.
 
-#Reference
+Reference
 ---
 ```sh
 1. Cerami, E. et al. The cBio cancer genomics portal: an open platform for exploring multidimensional cancer genomics data. Cancer Discov. 2, 401–404. https://doi.org/10.1158/2159-8290.cd-12-0095 (2012).
