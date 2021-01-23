@@ -377,7 +377,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
                  colors = blueWhiteRed(50),
                  textMatrix = textMatrix,
                  setStdMargins = FALSE,
-                 cex.text = 0.8,
+                 cex.text = 0.7,
                  zlim = c(-1,1),
                  main = paste("Module-clinical feature relationships"))
   # Close the file
