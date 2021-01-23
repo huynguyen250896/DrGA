@@ -91,20 +91,6 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     stop("Error: clinical data dedicated to datMODULE4 is missing. \n")
   }
   
-  if(missing(timeEXP)){
-    stop("Error: overall survival time of patients dedicated to exp is missing. \n")
-  }
-  if(missing(timeMODULE4)){
-    stop("Error: overall survival time of patients dedicated to datMODULE4 is missing. \n")
-  }
-  
-  if(missing(statusEXP)){
-    stop("Error: overall survival status of patients dedicated to exp is missing. \n")
-  }
-  if(missing(statusMODULE4)){
-    stop("Error: overall survival status of patients dedicated to datMODULE4 is missing. \n")
-  }
-  
   if(all(!(colnames(exp) %in% colnames(datMODULE4)))){
     stop("Error: make sure you put all identified driver genes into columns of exp and datMODULE4. \n")
   }
@@ -210,7 +196,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   mlog("Done in ", timediff0, " ", units(timediff0), ".\n")
   
   #-------------------------------------o0o-------------------------------------#
-  #### MODULE 2: VinCor
+  #### MODULE 2: DrGA-Cor
   #-------------------------------------o0o-------------------------------------#
   
   mlog("MODULE 2. DrGA-Cor: Correlation")
@@ -218,50 +204,66 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   #### MODULE 2.1: Association of driver genes with Overall survival of patients
   # create event vector for RNA expression data
   #> median is up-regulated genes and < median is down regulated genes
-  event_rna <- apply(t(exp),1, function(x) ifelse(x > median(x),"up","down"))
-  event_rna <- as.data.frame(event_rna) #should be as data frame || rows: patients, columns: driver genes
-  event <- statusEXP #numeric;  death = 1, survival = 0
-  time = timeEXP #numeric; 
-  #add time and event columns of clinical_exp to event_rna
-  event_rna <- cbind(event_rna,time) #time
-  event_rna <- cbind(event_rna,event) #status
-  
-  #type of data
-  event_rna <- as.data.frame(event_rna)
-  event_rna$time = as.double(as.character(event_rna$time))
-  event_rna$event = as.double(as.character(event_rna$event))
-  
-  # Identify which driver genes significantly associated with prognostic value
-  set.seed(seed)
-  cat("\n", "- Starting to perform the association analysis of individual driver genes with survival rates of patients...", "\n")
-  geneSA(genename = colnames(exp), event=event_rna) 
-  
-  #### MODULE 2.2: Association of driver genes with other clinical features
-  #create the necessary df
-  cor= exp %>% as.data.frame() #should be as data frame
-  
-  #create clinical data with only clinical features of our choice
-  remove_OSstatus = statusEXP
-  remove_OStime = timeEXP
-  
-  index_status = c() #empty vector
-  index_time = c() #empty vector
-  for (i in 1:ncol(clinicalEXP)){
-    index_status[i] = identical(remove_OSstatus,clinicalEXP[,i])
-    index_time[i] = identical(remove_OStime,clinicalEXP[,i])
+  if(!(missing(timeEXP) | missing(statusEXP))){
+    event_rna <- apply(t(exp),1, function(x) ifelse(x > median(x),"up","down"))
+    event_rna <- as.data.frame(event_rna) #should be as data frame || rows: patients, columns: driver genes
+    event <- statusEXP #numeric;  death = 1, survival = 0
+    time = timeEXP #numeric; 
+    #add time and event columns of clinical_exp to event_rna
+    event_rna <- cbind(event_rna,time) #time
+    event_rna <- cbind(event_rna,event) #status
+    
+    #type of data
+    event_rna <- as.data.frame(event_rna)
+    event_rna$time = as.double(as.character(event_rna$time))
+    event_rna$event = as.double(as.character(event_rna$event))
+    
+    # Identify which driver genes significantly associated with prognostic value
+    set.seed(seed)
+    cat("\n", "- Starting to perform the association analysis of individual driver genes with survival rates of individuals...", "\n")
+    geneSA(genename = colnames(exp), event=event_rna) 
+    
+    #### MODULE 2.2: Association of driver genes with other clinical features
+    #create the necessary df
+    cor= exp %>% as.data.frame() #should be as data frame
+    
+    #create clinical data with only clinical features of our choice
+    remove_OSstatus = statusEXP
+    remove_OStime = timeEXP
+    
+    index_status = c() #empty vector
+    index_time = c() #empty vector
+    for (i in 1:ncol(clinicalEXP)){
+      index_status[i] = identical(remove_OSstatus,clinicalEXP[,i])
+      index_time[i] = identical(remove_OStime,clinicalEXP[,i])
+    }
+    
+    featureEXP = clinicalEXP[, -c(which(index_status == TRUE), which(index_time == TRUE))]  %>% 
+      as.data.frame() #should be as data frame
+    
+    #####correlation between driver genes and the remaining clinical features
+    set.seed(seed)
+    cat("\n", "- Starting to perform association analysis of individual driver genes with the remaining clinical features of your choice...", "\n")
+    listCC=list()
+    for (i in 1:length(names(featureEXP)) ) {
+      listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
+      names(listCC)[i] <- names(featureEXP)[i]
+    }; print(listCC)
+  } else{
+    cat("\n", "- Starting to perform association analysis of individual driver genes with the clinical features of your choice...", "\n")
+    #create the necessary df
+    cor= exp %>% as.data.frame() #should be as data frame
+    featureEXP = clinicalEXP
+    
+    #####correlation between driver genes and the clinical features
+    set.seed(seed)
+    cat("\n", "- Starting to perform association analysis of individual driver genes with the remaining clinical features of your choice...", "\n")
+    listCC=list()
+    for (i in 1:length(names(featureEXP)) ) {
+      listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
+      names(listCC)[i] <- names(featureEXP)[i]
+    }; print(listCC)
   }
-  
-  featureEXP = clinicalEXP[, -c(which(index_status == TRUE), which(index_time == TRUE))]  %>% 
-    as.data.frame() #should be as data frame
-  
-  #####correlation between driver genes and lymph
-  set.seed(seed)
-  cat("\n", "- Starting to perform association analysis of individual driver genes with the remaining clinical features of your choice...", "\n")
-  listCC=list()
-  for (i in 1:length(names(featureEXP)) ) {
-    listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
-    names(listCC)[i] <- names(featureEXP)[i]
-  }; print(listCC)
   
   #time difference
   timediff = Sys.time() - now;
@@ -423,7 +425,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   cat(">>>>> The best agglomeration method identified in this step is:", agg_method1$method, "\n", "\n")
   
   #find the number of cluster
-  cat("- Starting to seek the optimal number of patient subgroups...", "\n")
+  cat("- Starting to seek the optimal number of subgroups...", "\n")
   
   #Dunn's index
   set.seed(seed)
@@ -440,8 +442,8 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   optimalnumber=optimalScores(v)
   if((identical(optimalnumber$Clusters[1],optimalnumber$Clusters[2])==TRUE) | (identical(optimalnumber$Clusters[2],optimalnumber$Clusters[3]) == TRUE) | (identical(optimalnumber$Clusters[1],optimalnumber$Clusters[3])==TRUE) | (identical(optimalnumber$Clusters[1],optimalnumber$Clusters[3])==TRUE & identical(optimalnumber$Clusters[2],optimalnumber$Clusters[3])==TRUE & identical(optimalnumber$Clusters[1],optimalnumber$Clusters[2])==TRUE)){
     optimalnumber=names(sort(summary(as.factor(optimalnumber$Clusters)), decreasing=T)[1]) 
-    cat(">>>> the optimal number of patient subgroups identified in this step is:", optimalnumber, "subgroups of patients","\n")} else{
-    stop(">>>> No optimal subgroup number can be found in this step \n")}
+    cat(">>>> the optimal number of patient subgroups identified in this step is:", optimalnumber, "subgroups","\n")} else{
+      stop(">>>> No optimal subgroup number can be found in this step \n")}
   
   # Cut tree into the identified optimal subgroup numbers
   set.seed(seed)
@@ -474,57 +476,70 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   dev.off()
   
   #MODULE 4.2. comparision between the identified subgroups
-  #survival rate
-  #timeMODULE4:  num;
-  #statusMODULE4:  num; death = 1, survival = 0
-  survData = data.frame(timeMODULE4, statusMODULE4) 
-  colnames(survData)[1:2] = c("time", "status")
-  survData$time = as.double(as.character(survData$time))
-  rownames(survData)<- rownames(cliMODULE4)
-  
-  #run SA
-  set.seed(seed)
-  coxFit <- survival::coxph(
-    Surv(time, status) ~ as.factor(sub_grp),
-    data = survData,
-    ties = "exact"
-  )
-  
-  #message
-  cat("\n","- Starting to perform a comparison between the identified", optimalnumber, "patient subgroups in term of survival rates...", "\n")
-  pcox= summary(coxFit)$logtest[3]#Cox p-value
-  cat(">>>> The Cox P-value gained from comparing patient outcomes between the identified", optimalnumber, "patient subgroups is: ", pcox[[1]])
-  cat("\n", ">>>> And the Hazard ratio between the identified", optimalnumber, "patient subgroups is: "); print(exp(coxFit[["coefficients"]]))
-  cat("With its 95% Confidence Interval is: ", paste(round(summary(coxFit)[["conf.int"]][[3]],3), "-", round(summary(coxFit)[["conf.int"]][[4]],3)))
-  
-  #remaining clinical feature
-  #message
-  cat("\n", "\n", "- Starting to perform comparisons between the identified", optimalnumber, "patient subgroups in terms of remaining clinical features...", "\n")
-  
-  set.seed(seed)
-  #create clinical data with only clinical features of our choice
-  remove_OSstatus1 = statusMODULE4
-  remove_OStime1 = timeMODULE4
-  
-  index_status1 = c() #empty vector
-  index_time1 = c() #empty vector
-  for (i in 1:ncol(cliMODULE4)){
-    index_status1[i] = identical(remove_OSstatus1,cliMODULE4[,i])
-    index_time1[i] = identical(remove_OStime1,cliMODULE4[,i])
+  if(!(missing(timeMODULE4) | missing(statusMODULE4))){
+    #survival rate
+    #timeMODULE4:  num;
+    #statusMODULE4:  num; death = 1, survival = 0
+    survData = data.frame(timeMODULE4, statusMODULE4) 
+    colnames(survData)[1:2] = c("time", "status")
+    survData$time = as.double(as.character(survData$time))
+    rownames(survData)<- rownames(cliMODULE4)
+    
+    #run SA
+    set.seed(seed)
+    coxFit <- survival::coxph(
+      Surv(time, status) ~ as.factor(sub_grp),
+      data = survData,
+      ties = "exact"
+    )
+    
+    #message
+    cat("\n","- Starting to perform a comparison between the identified", optimalnumber, "subgroups in term of survival rates...", "\n")
+    pcox= summary(coxFit)$logtest[3]#Cox p-value
+    cat(">>>> The Cox P-value gained from comparing patient outcomes between the identified", optimalnumber, "patient subgroups is: ", pcox[[1]])
+    cat("\n", ">>>> And the Hazard ratio between the identified", optimalnumber, "patient subgroups is: "); print(exp(coxFit[["coefficients"]]))
+    cat("With its 95% Confidence Interval is: ", paste(round(summary(coxFit)[["conf.int"]][[3]],3), "-", round(summary(coxFit)[["conf.int"]][[4]],3)))
+    
+    #remaining clinical feature
+    #message
+    cat("\n", "\n", "- Starting to perform comparisons between the identified", optimalnumber, "subgroups in terms of remaining clinical features...", "\n")
+    
+    set.seed(seed)
+    #create clinical data with only clinical features of our choice
+    remove_OSstatus1 = statusMODULE4
+    remove_OStime1 = timeMODULE4
+    
+    index_status1 = c() #empty vector
+    index_time1 = c() #empty vector
+    for (i in 1:ncol(cliMODULE4)){
+      index_status1[i] = identical(remove_OSstatus1,cliMODULE4[,i])
+      index_time1[i] = identical(remove_OStime1,cliMODULE4[,i])
+    }
+    cat("\n", "\n", "- Starting to perform comparisons between the identified", optimalnumber, "subgroups in terms of remaining clinical features...", "\n")
+    featureCNA = cliMODULE4[, -c(which(index_status1 == TRUE), which(index_time1 == TRUE))]  %>% 
+      as.data.frame() #should be as data frame
+    
+    featureCNA = featureCNA[rownames(datMODULE4),] #change the order of column/patients of featureCNA data following the variable 'info'
+    featureCNA$groups = info$groups
+    des=compareGroups::createTable(compareGroups::compareGroups(groups ~ ., data = featureCNA, method = NA))
+    #word
+    compareGroups::export2xls(des, file = "tableSTAT.xlsx", header.labels = c(p.overall = "p-value"))
+    #message
+    cat(">>>> The following are the remaining clinical features used and their own statistical description", "\n"); print(des$avail[,4])
+    writeLines("NOTE:\n*tableSTAT.txt placed in your current working directory\n*Please check to observe the statistical differences in the remaining clinical features between identified subgroups.")
+  } else{
+    cat("\n", "- Starting to perform comparisons between the identified", optimalnumber, "subgroups in terms of the clinical features...", "\n")
+    featureCNA = cliMODULE4
+
+    featureCNA$groups = info$groups
+    des=compareGroups::createTable(compareGroups::compareGroups(groups ~ ., data = featureCNA, method = NA))
+    #word
+    compareGroups::export2xls(des, file = "tableSTAT.xlsx", header.labels = c(p.overall = "p-value"))
+    #message
+    cat(">>>> The following are the clinical features used and their own statistical description", "\n"); print(des$avail[,4])
+    writeLines("NOTE:\n*tableSTAT.txt placed in your current working directory\n*Please check to observe the statistical differences in the clinical features between identified subgroups.")
   }
-  
-  featureCNA = cliMODULE4[, -c(which(index_status1 == TRUE), which(index_time1 == TRUE))]  %>% 
-    as.data.frame() #should be as data frame
-  
-  featureCNA = featureCNA[rownames(datMODULE4),] #change the order of column/patients of featureCNA data following the variable 'info'
-  featureCNA$groups = info$groups
-  des=compareGroups::createTable(compareGroups::compareGroups(groups ~ ., data = featureCNA, method = NA))
-  #word
-  compareGroups::export2xls(des, file = "tableSTAT.xlsx", header.labels = c(p.overall = "p-value"))
-  #message
-  cat(">>>> The following are the remaining clinical features used and their own statistical description", "\n"); print(des$avail[,4])
-  writeLines("NOTE:\n*tableSTAT.txt placed in your current working directory\n*Please check to observe the statistical differences in remaining clinical features between identified subgroups.")
-  
+ 
   #time difference
   timediff2 = Sys.time() - now2;
   mlog("Done in ", timediff2, " ", units(timediff2), ".\n")
