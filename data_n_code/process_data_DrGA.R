@@ -1,5 +1,5 @@
 #library
-devtools::install_github("huynguyen250896/DrGA") #NOTE: Download all dependencies of the tool!
+devtools::install_github("huynguyen250896/DrGA", force = T) #NOTE: Download all dependencies of the tool!
 libraries=c("DrGA", "dplyr", "survival", "tibble", "tidyr", "ComplexHeatmap", 
      'cluster', 'mclust', 'clValid', 'Biobase', 'annotate', 'GO.db', 
      'mygene', "dynamicTreeCut", "flashClust", "Hmisc", "WGCNA","purrr",
