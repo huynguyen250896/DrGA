@@ -44,7 +44,9 @@ Imports:
     purrr,
     gprofiler2,
     table1,
-    compareGroups
+    compareGroups,
+    impute,
+    preprocessCore
 Remotes: 
     cran::survival,
     cran::dplyr,
@@ -65,4 +67,6 @@ Remotes:
     cran::gprofiler2,
     cran::table1,
     cran::compareGroups
+    bioc::impute,
+    bioc::preprocessCore
 RoxygenNote: 7.1.1
