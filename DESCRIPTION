@@ -24,6 +24,7 @@ Suggests:
     knitr
 Encoding: UTF-8
 LazyData: true
+biocViews:
 Imports:
     sp,
     survival,
