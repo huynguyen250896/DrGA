@@ -9,7 +9,9 @@ The files here contain:
 
 3. process_data_DrGA.R: R code examples to process the raw data from scratch before inputting them to DrGA.
 
-4. code_DrGA.RData:  Processed data are available to run DrGA immediately.
+4. processed_DrGA.RData:  Processed data are available to run DrGA immediately.
+
+5. output_BRCA: Gained results from running DrGA.
 
 Reference
 ---
