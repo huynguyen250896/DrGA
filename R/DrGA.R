@@ -467,7 +467,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   
   #Plot heatmap
   pdf("heatmap.pdf", width=6, height=6)
-  hm<-ComplexHeatmap::Heatmap(t(datMODULE4), name = "CNA scale", 
+  hm<-ComplexHeatmap::Heatmap(t(datMODULE4), name = "Scale", 
                               show_row_names = hm_row_names, show_column_names = FALSE,
                               cluster_columns = FALSE,show_column_dend = FALSE,
                               show_row_dend = FALSE,top_annotation = ha, column_order = rownames(info),
