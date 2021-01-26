@@ -145,7 +145,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     write.table(cc,"gene_SA.txt",sep = "\t", quote = FALSE)
     
     #warning
-    writeLines("\nNOTE: \n*gene_SA.txt placed in your current working directory.\n*Please check to identify which genes significantly associated with prognostic value (survival rates of patients).\n*In any case, the numerator is up-expression level and the denominator is down-expression level. In other words, the down-expression level of genes considered is the reference.")
+    writeLines("\nNOTE: \n*gene_SA.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with prognostic value (survival rates of patients).\n*In any case, the numerator is up-expression level and the denominator is down-expression level. In other words, the down-expression level of genes considered is the reference.")
   }
   
   # defined computeC function
@@ -170,7 +170,10 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     cc1 = cc1 %>% subset(Q.value <= 0.05) #only retain Genes with Q <=0.05
     cc1 = dplyr::select(cc1, -c(rank, My_name_is))
     cc1 = list(cc1 %>% subset(CC > 0),cc1 %>% subset(CC < 0)) # [1] cor coefficient > 0 - [2] cor coefficient <0
-    return(cc1)}
+    return(cc1)
+  
+  #warning
+    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")}
   
   #-------------------------------------o0o-------------------------------------#
   #### MODULE 1: DrGA-EA: Enrichment Analysis
@@ -248,7 +251,11 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     for (i in 1:length(names(featureEXP)) ) {
       listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
       names(listCC)[i] <- names(featureEXP)[i]
-    }; print(listCC)
+    }; 
+    sink("CC_results.txt")
+    print(listCC)
+    sink()
+                       
   } else{
     cat("\n", "- Starting to perform association analysis of individual driver genes with the clinical features of your choice...", "\n")
     #create the necessary df
@@ -262,7 +269,10 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     for (i in 1:length(names(featureEXP)) ) {
       listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
       names(listCC)[i] <- names(featureEXP)[i]
-    }; print(listCC)
+    }; 
+    sink("CC_results.txt")
+    print(listCC)
+    sink()
   }
   
   #time difference
