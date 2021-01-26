@@ -254,7 +254,10 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     }; 
     sink("CC_results.txt")
     print(listCC)
-    sink()} 
+    sink()
+    
+    #warning
+    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the remaining clinical features.\n")
     
     else{
     cat("\n", "- Starting to perform association analysis of individual driver genes with the clinical features of your choice...", "\n")
@@ -273,10 +276,10 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     sink("CC_results.txt")
     print(listCC)
     sink()
-  }
-   
+    
     #warning
-    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")}
+    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")
+  }
 
   #time difference
   timediff = Sys.time() - now;
