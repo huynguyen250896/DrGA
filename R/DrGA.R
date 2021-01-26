@@ -171,9 +171,9 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     cc1 = dplyr::select(cc1, -c(rank, My_name_is))
     cc1 = list(cc1 %>% subset(CC > 0),cc1 %>% subset(CC < 0)) # [1] cor coefficient > 0 - [2] cor coefficient <0
     return(cc1)
+  }
   
-  #warning
-    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")}
+  
   
   #-------------------------------------o0o-------------------------------------#
   #### MODULE 1: DrGA-EA: Enrichment Analysis
@@ -255,6 +255,8 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     sink("CC_results.txt")
     print(listCC)
     sink()
+    #warning
+    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")}
                        
   } else{
     cat("\n", "- Starting to perform association analysis of individual driver genes with the clinical features of your choice...", "\n")
