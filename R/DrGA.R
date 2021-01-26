@@ -254,11 +254,9 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     }; 
     sink("CC_results.txt")
     print(listCC)
-    sink()
-    #warning
-    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")}
-                       
-  } else{
+    sink()} 
+    
+    else{
     cat("\n", "- Starting to perform association analysis of individual driver genes with the clinical features of your choice...", "\n")
     #create the necessary df
     cor= exp %>% as.data.frame() #should be as data frame
@@ -276,7 +274,10 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     print(listCC)
     sink()
   }
-  
+   
+    #warning
+    writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")}
+
   #time difference
   timediff = Sys.time() - now;
   mlog("Done in ", timediff, " ", units(timediff), ".\n")
