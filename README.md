@@ -1,4 +1,4 @@
-# DrGA: driver gene analysis in an automatic manner
+# DrGA: cancer driver gene analysis in an automatic manner
 #### I. Introduction
 ---
 DrGA is a novel R package that has been developed based on the idea of our most recent driver gene analysis scheme [here](https://www.nature.com/articles/s41598-020-77318-1). Its aim is to wholy automate the analysis process of driver genes at a low investment of time for this process by merging state-of-the-art statistical tools into one.
