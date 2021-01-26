@@ -29,9 +29,9 @@ It is input data to serve to run the second and third modules.}
 
 \item{clinicalEXP}{a data frame or matrix.
 It includes its rows are samples, and its columns are clinical features of your choice.
-Note that the clinical data must have two columns as overall survival time (continuous
-variable) and overall survival status (binary variable; usually coded 1 as death and 0 as
-live) of all the subjects.}
+Note that if users want to perform survival analysis, \code{clinicalEXP} must have two 
+columns as overall survival time (continuous variable) and overall survival status (binary 
+variable; usually coded 1 as death and 0 as live) of all the subjects.}
 
 \item{timeEXP}{a vector of overall survival time. It is a column vector of \code{clinicalEXP}.}
 
@@ -42,9 +42,9 @@ It is input data to serve to run the forth module.}
 
 \item{cliMODULE4}{a data frame or matrix.
 It includes its rows are samples, and its columns are clinical features of your choice.
-Note that the clinical data must have two columns as overall survival time (continuous
-variable) and overall survival status (binary variable; usually coded 1 as death and 0 as
-live) of all the subjects.}
+Note that if users want to perform survival analysis, \code{cliMODULE4} must have two 
+columns as overall survival time (continuous variable) and overall survival status (binary 
+variable; usually coded 1 as death and 0 as live) of all the subjects.}
 
 \item{timeMODULE4}{a vector of overall survival time. It is a column vector of \code{cliMODULE4}}
 
