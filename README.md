@@ -1,7 +1,7 @@
 # DrGA: cancer driver gene analysis in an automatic manner
 #### I. Introduction
 ---
-DrGA is a novel R package that has been developed based on the idea of our most recent driver gene analysis scheme [here](https://www.nature.com/articles/s41598-020-77318-1). Its aim is to wholy automate the analysis process of driver genes at a low investment of time for this process by merging state-of-the-art statistical tools into one.
+DrGA is a novel R package that has been developed based on the idea of our most recent driver gene analysis scheme [here](https://www.nature.com/articles/s41598-020-77318-1). It wholly automates the analysis process and attached improve- ments to maximize user experience with the highest convenience. In particular, it facilitates users with limited IT backgrounds and rapidly create consistent and reproducible results. We describe the usage of the DrGA on driver genes of human breast cancer using a multi-omics dataset. Besides, we also provide users with another potential application of DrGA on analyzing genomic biomarkers of a complex disease from other species.
 
 #### II. Understanding the tool and Data Structure
 ---
@@ -34,7 +34,7 @@ The following are parameters included in DrGA and their role:
 
 - hm_row_names: logical. If `hm_row_names = TRUE` (default value), gene names appear in rows of the heatmap.  If due to the large number of driver genes leading to impossibly showing gene names in rows of the heatmap, users can turn them off by `hm_row_names = FALSE`.
 
-Please download datasets [data_n_code](https://github.com/huynguyen250896/DrGA/tree/master/data_n_code) as examples to well grasp DrGA's requirement on data structure.
+Please download datasets [data_n_code](https://github.com/huynguyen250896/DrGA/tree/master/data_n_code) and read [Supplementary Materials](https://github.com/huynguyen250896/DrGA/blob/master/Supplementary%20Materials.pdf) (highly recommended) as examples to well grasp DrGA's easy-to-meet format and its usage.
 
 #### III. Pipeline
 ---
