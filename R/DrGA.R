@@ -411,7 +411,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   }
   
   for (j in 1:length(con)){
-    cat("\n",">>>> Top 5 hub genes identified in the",unique(moduleColors)[[j]],"module is:",rownames(con[[j]]), "\n") 
+    cat("\n",">>>> Top 5 hub genes identified in the",unique(moduleColors)[[j]],"module are:",rownames(con[[j]]), "\n") 
   }
   
   #time difference
