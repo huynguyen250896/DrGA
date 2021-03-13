@@ -259,7 +259,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     #warning
     writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the remaining clinical features.\n")
     
-    } else{
+  } else{
     cat("\n", "- Starting to perform association analysis of individual driver genes with the clinical features of your choice...", "\n")
     #create the necessary df
     cor= exp %>% as.data.frame() #should be as data frame
@@ -267,7 +267,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     
     #####correlation between driver genes and the clinical features
     set.seed(seed)
- 
+    
     listCC=list()
     for (i in 1:length(names(featureEXP)) ) {
       listCC[i] = lapply(names(featureEXP)[i], computeC, data = cor, var = featureEXP)
@@ -280,7 +280,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     #warning
     writeLines("\nNOTE: \n*CC_results.txt placed in your current working directory.\n*Please check to identify which gene significantly associated with the clinical features.\n")
   }
-
+  
   #time difference
   timediff = Sys.time() - now;
   mlog("Done in ", timediff, " ", units(timediff), ".\n")
@@ -546,7 +546,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   } else{
     cat("\n", "- Starting to perform comparisons between the identified", optimalnumber, "subgroups in terms of the clinical features...", "\n")
     featureCNA = cliMODULE4
-
+    
     featureCNA$groups = info$groups
     des=compareGroups::createTable(compareGroups::compareGroups(groups ~ ., data = featureCNA, method = NA))
     #word
@@ -555,8 +555,19 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
     cat(">>>> The following are the clinical features used and their own statistical description", "\n"); print(des$avail[,4])
     writeLines("NOTE:\n*tableSTAT.txt placed in your current working directory\n*Please check to observe the statistical differences in the clinical features between identified subgroups.")
   }
- 
+  
   #time difference
   timediff2 = Sys.time() - now2;
   mlog("Done in ", timediff2, " ", units(timediff2), ".\n")
+  
+  # Design results
+  #create a table shows which genes assigned specifically to which module
+  moduleColors1 = as.data.frame(moduleColors)
+  rownames(moduleColors1) = colnames(exp)
+  
+  results = list()
+  results = c(results,list(listCC, moduleColors1, MEs, sub_grp))
+  rownames(results[[1]]) = rownames(data)
+  names(results) = c('CC_module2', 'moduleColors_module3', 'MEs_module3', 'subgroups_module4')
+  return(results)
 }
