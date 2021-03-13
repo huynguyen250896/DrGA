@@ -78,5 +78,13 @@ str(clinicalCNA)
 #-------------------------------------o0o-------------------------------------#
 
 #RUN!!!!
+#make sure that patients that share between exp and clinicalEXP are included at their rows and in exactly the same order 
+all(rownames(exp) == rownames(clinicalEXP))
+#[1] TRUE
+
+#make sure that patients that share between cna and clinicalCNA are included at their rows and in exactly the same order 
+all(rownames(cna) == rownames(clinicalCNA))
+#[1] TRUE
+
 drga = DriverGeneAnalysis(exp = exp, clinicalEXP = clinicalEXP, timeEXP = clinicalEXP$time, statusEXP = clinicalEXP$status, 
                    datMODULE4 = cna,  cliMODULE4 = clinicalCNA, timeMODULE4 = clinicalCNA$time, statusMODULE4 = clinicalCNA$status)
