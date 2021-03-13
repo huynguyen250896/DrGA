@@ -185,7 +185,7 @@ DriverGeneAnalysis = function(organism = "hsapiens", sources = c("GO:BP", "KEGG"
   gostres <- gost(query = colnames(exp), 
                   organism = organism, ordered_query = FALSE, 
                   multi_query = FALSE, significant = TRUE, exclude_iea = FALSE, 
-                  measure_underrepresentation = FALSE, evcodes = FALSE, 
+                  measure_underrepresentation = FALSE, evcodes = TRUE, 
                   user_threshold = 0.05, correction_method = "g_SCS", 
                   domain_scope = "annotated", custom_bg = NULL, 
                   numeric_ns = "", sources = sources, as_short_link = FALSE)
