@@ -80,7 +80,7 @@ dim(cli)
 #-------------------------------------o0o-------------------------------------#
 
 #RUN!!!!
-DriverGeneAnalysis(exp = exp, clinicalEXP = cli,
+drga = DriverGeneAnalysis(exp = exp, clinicalEXP = cli,
                    datMODULE4 = exp,  cliMODULE4 = cli, organism = 'mmusculus',
                    hm_row_names = F)
 
