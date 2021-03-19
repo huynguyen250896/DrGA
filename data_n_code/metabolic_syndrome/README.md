@@ -4,7 +4,7 @@ Liver gene expression data (n = 135) from female mice [1] are freely downloaded 
 accession number GSE2814.
 
 The files here contain:
-1. FemaleLiver-Data.zip: the raw data nescessary for running examples.
+1. FemaleLiver-Data.zip: the raw data necessary for running examples.
 
 2. process_data_DrGA.R: R code examples to process the raw data from scratch before inputting them to DrGA.
 
