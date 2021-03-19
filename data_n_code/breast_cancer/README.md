@@ -5,7 +5,7 @@ Breast cancer data are downloaded from the cBioPortal for Cancer Genomics (http:
 The files here contain:
 1. Link_to_download_full_data.txt: A text file has a shared google drive link to download all the raw data mentioned.
 
-2. raw_data.zip: a subset of the raw data nescessary for running examples from the full one above.
+2. raw_data.zip: a subset of raw data necessary for running examples, extracted from the full one above.
 
 3. process_data_DrGA.R: R code examples to process the raw data from scratch before inputting them to DrGA.
 
