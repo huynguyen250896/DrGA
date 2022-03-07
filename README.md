@@ -61,4 +61,22 @@ drga = DriverGeneAnalysis(exp = exp, clinicalEXP = clinicalEXP, timeEXP = clinic
                    datMODULE4 = cna,  cliMODULE4 = clinicalCNA, timeMODULE4 = clinicalCNA$time, statusMODULE4 = clinicalCNA$status)
 ```
 
+#### V. Citation
+---
+Please kindly cite the following paper (and Star this Github repository if you find this tool of interest) if you use the tool in this repo: </br>
+```sh
+Reference Type: Journal Article
+Author: Nguyen, Quang-Huy
+Nguyen, Tin
+Le, Duc-Hau
+Year: 2022
+Title: DrGA: cancer driver gene analysis in a simpler manner
+Journal: BMC Genomics
+Volume: 23
+Issue: 1
+Pages: 86
+Date: 2022/03/05
+ISSN: 1471-2105
+DOI: 10.1186/s12859-022-04606-0
+```
 Feel free to contact [Quang-Huy Nguyen](https://github.com/huynguyen250896) <huynguyen96.dnu AT gmail DOT com> for any questions about the code and results.
