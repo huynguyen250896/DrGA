@@ -66,8 +66,14 @@ DrGA is a novel R package that has been developed based on the idea of our recen
 }
 \examples{
 DriverGeneAnalysis(exp = exp, clinicalEXP = clinicalEXP, timeEXP = clinicalEXP$time, statusEXP = clinicalEXP$status, datMODULE4 = cna,  cliMODULE4 = clinicalCNA, timeMODULE4 = clinicalCNA$time, statusMODULE4 = clinicalCNA$status)
-
 }
+
+\references{
+Quang-Huy Nguyen, Duc-Hau Le. (2022). 
+DrGA: cancer driver gene analysis in a simpler manner.
+BMC Genomics, 23(1):86.
+}  
+
 \author{
 Quang-Huy Nguyen
 }
