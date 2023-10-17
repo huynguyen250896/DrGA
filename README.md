@@ -45,7 +45,7 @@ Please download datasets [data_n_code](https://github.com/huynguyen250896/DrGA/t
 ---
 Use the following command to install directly from GitHub;
 ```sh
-devtools::install_github("huynguyen250896/DrGA")
+devtools::install_github("huynguyen250896/DrGA", dependencies = T)
 ```
 Call the nescessary libraries;
 ```sh
